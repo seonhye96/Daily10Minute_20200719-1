@@ -48,6 +48,9 @@ class ViewProofDetailActivity : BaseActivity() {
 //                    인증글 데이터를 다시 받아오자. => 댓글 목록을 새로 가져오는 효과가 있다.
                     getProofDataServer()
 
+//                    댓글 등록이 완료되면 입력칸을 비워주자
+                    replyContentEdt.setText("")
+
                 }
 
             })
@@ -94,6 +97,10 @@ class ViewProofDetailActivity : BaseActivity() {
 
 //                    서버 통신 과정이 어댑터 연결보다 늦게 완료 될 수 있다.
                     mReplyAdapter.notifyDataSetChanged()
+
+//                    댓글을 불러오면 => 맨 밑으로 리스트뷰를 끌어 내려주자.
+//                    만약 댓글이 10개 => 0~9 로 이동 : 마지막칸으로 이동
+                    replyListView.smoothScrollToPosition(mReplyList.size - 1)
 
                 }
 

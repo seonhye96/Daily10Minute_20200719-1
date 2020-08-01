@@ -9,7 +9,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_view_project_detail.*
+import kr.co.tjoeun.daily10minute_20200719.adapters.ReplyAdapter
 import kr.co.tjoeun.daily10minute_20200719.datas.Project
+import kr.co.tjoeun.daily10minute_20200719.datas.Reply
 import kr.co.tjoeun.daily10minute_20200719.utils.ServerUtil
 import org.json.JSONObject
 
@@ -20,6 +22,7 @@ class ViewProjectDetailActivity : BaseActivity() {
 
 //    이 화면에서 보여줄 프로젝트 자체 변수
     lateinit var mProject : Project
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

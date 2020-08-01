@@ -13,6 +13,7 @@
         android:gravity="center_vertical">
 
         <TextView
+            android:id="@+id/writerNickNameTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="작성자닉네임"
@@ -20,6 +21,7 @@
             android:textStyle="bold"/>
 
         <TextView
+            android:id="@+id/contextTxt"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -30,6 +32,7 @@
 
 
         <Button
+            android:id="@+id/likeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="좋아요"/>

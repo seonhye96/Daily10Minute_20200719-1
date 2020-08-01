@@ -1,8 +1,11 @@
 package kr.co.tjoeun.daily10minute_20200719
 
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_view_project_proof_list.*
 import kotlinx.android.synthetic.main.activity_view_proof_detail.*
+import kr.co.tjoeun.daily10minute_20200719.adapters.ProofAdapter
 import kr.co.tjoeun.daily10minute_20200719.datas.Proof
+import kr.co.tjoeun.daily10minute_20200719.datas.Reply
 import kr.co.tjoeun.daily10minute_20200719.utils.ServerUtil
 import kr.co.tjoeun.daily10minute_20200719.utils.TimeUtil
 import org.json.JSONObject
@@ -14,6 +17,11 @@ class ViewProofDetailActivity : BaseActivity() {
 
 //    이 화면에서 표시해야할 데이터들이 담긴 인증 글
     lateinit var mProof : Proof
+
+//    서버에서 내려주는 댓글들을 담을 목록
+    val mReplyList = ArrayList<Reply>()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +40,7 @@ class ViewProofDetailActivity : BaseActivity() {
         mProofId = intent.getIntExtra("proof_id", 0)
 
         getProofDataServer()
+
     }
 
     fun getProofDataServer() {
@@ -44,6 +53,15 @@ class ViewProofDetailActivity : BaseActivity() {
 
                 mProof = Proof.getProofFromJson(proof)
 
+//                같이 담겨오는 댓글목록을 처리
+                val replies = proof.getJSONArray("replies")
+
+                for (i in 0 until replies.length()){
+
+//                    댓글 JSONObject 추출 => Reply 형태로 변환 => mReplyList에 추가
+                    mReplyList.add(Reply.getReplyFromJson(replies.getJSONObject(i)))
+
+                }
                 runOnUiThread{
                     writerNickNameTxt.text = mProof.user.nickName
                     createAtTxt.text = TimeUtil.getTimeAgoStringFromCalendar(mProof.proofTime)

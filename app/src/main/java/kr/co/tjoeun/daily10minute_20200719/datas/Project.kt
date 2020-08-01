@@ -12,11 +12,13 @@ class Project {
     var proofMethod = ""
     var ongoingUserCount = 0
 
-    var completeDays = 0
-    var proofCount = 0
-
 //    내 진행 상태를 표시하는 변수 : null => 참가 해본적이 없는 상태
     var myLastStatus : String? = null
+
+//    최종 목표일수 + 현재 진행 일수
+    var completeDays = 0
+
+    var proofCount = 0
 
     companion object {
 
@@ -35,16 +37,20 @@ class Project {
             p.proofMethod = json.getString("proof_method")
             p.ongoingUserCount = json.getInt("ongoing_users_count")
 
-            /*---------------------*/
-            p.completeDays = json.getInt("complete_days")
-            p.proofCount = json.getInt("proof_count")
-            /*---------------------*/
 
 //            내 진행상태는 null이 아닐때만 파싱하자.
             if (!json.isNull("my_last_status")) {
 //                파싱 진행
                 p.myLastStatus = json.getString("my_last_status")
             }
+
+            p.completeDays = json.getInt("complete_days")
+
+//            내 인증 횟수는 목록을 불러올때는 안내려줌 => null 인지 체크 하고 나서 파싱
+            if(!json.isNull("proof_count")) {
+                p.proofCount = json.getInt("proof_count")
+            }
+
 
 //            완성된 p를 리턴
             return p

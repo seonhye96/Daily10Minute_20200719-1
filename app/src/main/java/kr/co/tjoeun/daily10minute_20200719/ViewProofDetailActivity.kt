@@ -3,6 +3,8 @@ package kr.co.tjoeun.daily10minute_20200719
 import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_view_proof_detail.*
+import kotlinx.android.synthetic.main.activity_view_proof_detail.writerNickNameTxt
+import kotlinx.android.synthetic.main.reply_list_item.*
 import kr.co.tjoeun.daily10minute_20200719.adapters.ReplyAdapter
 import kr.co.tjoeun.daily10minute_20200719.datas.Proof
 import kr.co.tjoeun.daily10minute_20200719.datas.Reply

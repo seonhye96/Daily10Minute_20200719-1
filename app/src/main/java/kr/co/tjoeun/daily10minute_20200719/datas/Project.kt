@@ -12,6 +12,9 @@ class Project {
     var proofMethod = ""
     var ongoingUserCount = 0
 
+    var completeDays = 0
+    var proofCount = 0
+
 //    내 진행 상태를 표시하는 변수 : null => 참가 해본적이 없는 상태
     var myLastStatus : String? = null
 
@@ -31,6 +34,11 @@ class Project {
 
             p.proofMethod = json.getString("proof_method")
             p.ongoingUserCount = json.getInt("ongoing_users_count")
+
+            /*---------------------*/
+            p.completeDays = json.getInt("complete_days")
+            p.proofCount = json.getInt("proof_count")
+            /*---------------------*/
 
 //            내 진행상태는 null이 아닐때만 파싱하자.
             if (!json.isNull("my_last_status")) {

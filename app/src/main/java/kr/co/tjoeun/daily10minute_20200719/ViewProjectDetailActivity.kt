@@ -2,16 +2,13 @@ package kr.co.tjoeun.daily10minute_20200719
 
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_view_project_detail.*
-import kr.co.tjoeun.daily10minute_20200719.adapters.ReplyAdapter
 import kr.co.tjoeun.daily10minute_20200719.datas.Project
-import kr.co.tjoeun.daily10minute_20200719.datas.Reply
 import kr.co.tjoeun.daily10minute_20200719.utils.ServerUtil
 import org.json.JSONObject
 
@@ -134,6 +131,8 @@ class ViewProjectDetailActivity : BaseActivity() {
 
         getProjectDetailFromServer()
 
+
+
     }
 
 //    프로젝트 상세 정보를 불러오는 기능
@@ -182,10 +181,17 @@ class ViewProjectDetailActivity : BaseActivity() {
 //                참여 중 버튼들 표시, 참가 버튼 숨기기
                 ongoingButtonLayout.visibility = View.VISIBLE
                 joinProjectBtn.visibility = View.GONE
+
+//                진행률 레이아웃 표시 (VISIBLE)
+                progressLayout.visibility = View.VISIBLE
+
             }
             else {
                 ongoingButtonLayout.visibility = View.GONE
                 joinProjectBtn.visibility = View.VISIBLE
+
+//                진행률 레이아웃 숨기기 (GONE)
+                progressLayout.visibility = View.GONE
             }
 
         }

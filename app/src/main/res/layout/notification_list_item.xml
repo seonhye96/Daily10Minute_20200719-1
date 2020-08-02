@@ -20,6 +20,7 @@ S
             app:civ_border_color="@color/lightGray"/>
 
         <LinearLayout
+            android:id="@+id/userProfileImg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -34,7 +35,7 @@ S
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/timeTxt"
+                android:id="@+id/notitimeTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="~분 전"

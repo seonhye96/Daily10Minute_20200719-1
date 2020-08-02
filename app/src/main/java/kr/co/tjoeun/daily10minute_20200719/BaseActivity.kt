@@ -2,6 +2,7 @@ package kr.co.tjoeun.daily10minute_20200719
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.widget.ImageView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -9,6 +10,10 @@ import androidx.appcompat.widget.Toolbar
 abstract class BaseActivity : AppCompatActivity() {
 
     val mContext = this
+
+//    커스텀 액션바 xml에서 만들어둔 뷰들은 멤버변수로 만들고, 직접 연결하자.
+//    BaseActivity를 상속받는 모든 액티비티들이 => 이 변수를 같이 상속받게 된다.
+    lateinit var notificationImg : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
@@ -41,6 +46,8 @@ abstract class BaseActivity : AppCompatActivity() {
         val parentToolBar = myActionBar.customView.parent as Toolbar
         parentToolBar.setContentInsetsAbsolute(0, 0)
 
+//        액션바 xml에 있는 뷰들을 => 코틀린에서 사용할 수 있도록 연결.
+        notificationImg = myActionBar.customView.findViewById(R.id.notificationImg)
     }
 
 }

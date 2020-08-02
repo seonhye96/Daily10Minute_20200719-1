@@ -43,8 +43,13 @@ class NotificationListActivity : BaseActivity() {
                     mNotiList.add(Notification.getNotificationFromJson(notifications.getJSONObject(i)))
                 }
 
-//
-                mNotiAdapter.notifyDataSetChanged()
+//                받아온 모든 알림중 최신 알림의 id값을 서버에 전달 => 여기까지 읽음 처리
+                ServerUtil.postRequestNotification(mContext, mNotiList[0].id, null)
+                mNotiList[0].id
+                runOnUiThread {
+//              배열에 목록이 모두 추가되면 => 새로고침
+                    mNotiAdapter.notifyDataSetChanged()
+                }
             }
 
         })

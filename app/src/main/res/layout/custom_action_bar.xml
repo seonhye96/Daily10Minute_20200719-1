@@ -41,6 +41,8 @@
             android:layout_height="17dp"
             android:background="@drawable/red_circle"
             android:gravity="center"
+            android:visibility="gone"
+            tools:visibility="visible"
             android:layout_gravity="right"
             android:layout_marginTop="4dp"
             android:layout_marginRight="4dp"

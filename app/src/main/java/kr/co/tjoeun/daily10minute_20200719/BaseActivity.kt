@@ -1,5 +1,7 @@
 package kr.co.tjoeun.daily10minute_20200719
 
+import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -7,6 +9,17 @@ import androidx.appcompat.widget.Toolbar
 abstract class BaseActivity : AppCompatActivity() {
 
     val mContext = this
+
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+//        액션바가 있는지 확인하고 실행.
+        supportActionBar?.let {
+
+//            액션바가 null이 아닐때만 실행되는 내용
+            setCustomActionBar()
+        }
+        setCustomActionBar()
+    }
 
 //    각각의 화면마다 구현해야할 내용이 달라지는 함수 : abstract
     abstract fun setupEvents()
